@@ -2,9 +2,12 @@
 
 //PUT THIS INDEX.JS FILE IN SRC/ASSETS/COMPONENTS/NAV TO MAKE A NEW REACT COMPONENT FOR THE NAV SECTION WHICH IS THE HEADER. 1ST=IMPORT 2ND=FUNCTIONS 3RD=EXPORT ----> DON'T FORGET TO CAPITALIZE THE 'A' IN ABOUT BEC. IT USES PASCAL CASING TO SIGNIFY THE REACT COMPONENT
 import React from 'react';
+import React, { useState } from "react";
+import { capitalizeFirstLetter } from "../../utils/helpers";
 
 function Nav() {
-    const categories = [
+    //CATEGORIES BECOMES IDENTIFIED AS AN ARRAY
+    const [categories] = useState([
         {
             name: "commercial",
             description:
@@ -16,17 +19,22 @@ function Nav() {
             name: "landscape",
             description: "Fields, farmhouses, waterfalls, and the beauty of nature"
         }
-    ];
-    const handleClick = (item) => {
-        console.log(item);
-        return item;
-    };
+    ]);
+    const [currentCategory, setCurrentCategory] = useState(categories[0]);
+
+    // const handleClick = (item) => {
+    //     console.log(item);
+    //     return item;
+    // };
 
     return (
         <header className="flex-row px-1">
             <h2>
                 <a data-testid="link" href="/">
-                    <span role="img" aria-label="camera"> 📸</span> Oh Snap!
+                    <span role="img" aria-label="camera">{" "} 
+                    📸
+                    </span>{" "}
+                    Oh Snap!
                 </a>
             </h2>
             <nav>
@@ -41,12 +49,9 @@ function Nav() {
                         </span>
                     </li>
                     {categories.map((category) => (
-                        <li
-                            className="mx-1"
-                            key={category.name}
-                        >
-                            <span onClick={() => categorySelected(category.name)} >
-                                {category.name}
+                        <li className="mx-1" key={category.name} >
+                            <span onClick={() => { handleClick(category.name); }}>
+                                {capitalizeFirstLetter(category.name)}
                             </span>
                         </li>
                     ))}
