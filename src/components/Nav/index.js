@@ -14,28 +14,31 @@ function Nav() {
         { name: "food", description: "Delicious delicacies" },
         {
             name: "landscape",
-            description: "Fields, farmhouses, waterfalls, and the beauty of nature",
-        },
+            description: "Fields, farmhouses, waterfalls, and the beauty of nature"
+        }
     ];
-    function categorySelected(name) {
-        console.log(`${name} clicked`)
-    }
+    const handleClick = (item) => {
+        console.log(item);
+        return item;
+    };
+
     return (
-        <header>
+        <header className="flex-row px-1">
             <h2>
-                <a href="/">
+                <a data-testid="link" href="/">
                     <span role="img" aria-label="camera"> 📸</span> Oh Snap!
                 </a>
             </h2>
             <nav>
                 <ul className="flex-row">
-                    <li className="mx-2">
-                        <a href="#about">
+                <li className="mx-2">
+                        <a data-testid="about" href="#about" onClick={() => handleClick("About")}>
                             About me
                         </a>
                     </li>
-                    <li>
-                        <span>Contact</span>
+                    <li className={"mx-2"}>
+                        <span onClick={() => handleClick('Contact')}>Contact
+                        </span>
                     </li>
                     {categories.map((category) => (
                         <li
