@@ -4,7 +4,6 @@ import coverImage from "../../assets/cover/cover-image.JPG";
 import React from 'react';
 
 
-
 function About() {
     return (
         <section className="my-5">
