@@ -4,6 +4,7 @@
 import React from 'react';
 import PhotoList from '../PhotoList';
 import { capitalizeFirstLetter } from '../../utils/helpers';
+import photo from "../../assets/small/commercial/0.jpg";
 
 function Gallery(props) {
   const currentCategory = {
@@ -25,7 +26,7 @@ function Gallery(props) {
       <div className="flex-row">
         {/*{photo} BREAKS THE CODE {PHOTOLIST DOES NOT*/}
         <img
-          src= {PhotoList}
+          src= {photo}
           alt="Commercial Example"
           className="img-thumbnail mx-1"
           
