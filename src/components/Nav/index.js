@@ -7,21 +7,17 @@ import React, { useState, useEffect } from 'react';
 // import React, { useState } from "react";
 import { capitalizeFirstLetter } from "../../utils/helpers";
 
-function Nav(props) {
-    const {
-        categories = [],
-        setCurrentCategory,
-        currentCategory,
-    } = props;
-
-    useEffect(() => {
-        document.title = capitalizeFirstLetter(currentCategory.name);
-    }, [currentCategory]);
-
-    const handleClick = (item) => {
-        console.log(item);
-        return item;
-    };
+function Nav() {
+const [categories] = useState([
+  {
+    name: 'commercial',
+    description: 'Photos of grocery stores, food trucks, and other commercial projects',
+  },
+  { name: 'portraits', description: 'Portraits of people in my life' },
+  { name: 'food', description: 'Delicious delicacies' },
+  { name: 'landscape', description: 'Fields, farmhouses, waterfalls, and the beauty of nature' },
+]);
+const [currentCategory, setCurrentCategory] = useState(categories[0]);
 
     return (
         <header className="flex-row px-1">
@@ -40,8 +36,10 @@ function Nav(props) {
                             About me
                         </a>
                     </li>
+                    {/*REACT RESPONDS TO THIS.HANDLECLICK - NOT HANDLECLICK ALONE */}
                     <li className={"mx-2"}>
-                        <span>Contact
+                        <span onClick={() => this.handleClick('Contact')}>
+                            Contact
                         </span>
                     </li>
                     {categories.map((category) => (

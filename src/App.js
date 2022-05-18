@@ -1,11 +1,11 @@
 //IMPORT ANY NEW COMPONENTS
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import Nav from './components/Nav';
 import About from './components/About';
 import Gallery from './components/Gallery';
 import './App.css';
-{/*import logo from './logo.svg';*/ }
+//import logo from './logo.svg';
 
 function App() {
   //CATEGORIES BECOMES IDENTIFIED AS AN ARRAY AND MOVED FROM NAV TO APP
@@ -25,14 +25,14 @@ function App() {
   const [currentCategory, setCurrentCategory] = useState(categories[0]);
 
   return (
-    <div className="App">
+    <div>
       <Nav
         categories={categories}
         setCurrentCategory={setCurrentCategory}
         currentCategory={currentCategory}
       ></Nav>
       <main>
-        <Gallery></Gallery>
+        <Gallery currentCategory={currentCategory}></Gallery>
         <About></About>
       </main>
     </div>
