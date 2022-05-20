@@ -1,7 +1,7 @@
-//IMPORT ANY IMAGES- ADD THE SRC ATTRIBUTE OF {COVERIMAGE}
-import coverImage from "../../assets/cover/cover-image.JPG";
 //MAKING A NEW REACT COMPONENT FOR THE ABOUT SECTION 1ST IMPORT 2ND FUNCTIONS 3RD EXPORT
 import React from 'react';
+//IMPORT ANY IMAGES- ADD THE SRC ATTRIBUTE OF {COVERIMAGE}
+import coverImage from "../../assets/cover/cover-image.JPG";
 
 
 function About() {

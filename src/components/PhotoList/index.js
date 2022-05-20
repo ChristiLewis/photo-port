@@ -1,11 +1,11 @@
 //WHEN USING USESTATE OR OTHER HOOKS TO SET DEFAULT VALUES FOR THE ARRAY- MODIFY THE IMPORT STATEMENT 
 import React, { useState } from 'react';
-//IMPORT MODAL OR THE CODE WILL BREAK-MAKE A MODAL COMPONENT AND ADD IT TO FILE
+//IMPORT MODAL OR THE CODE WILL BREAK-MAKE A MODAL COMPONENT AND ADD IT TO ALL REQ FILES
 import Modal from '../Modal';
 
 
 
-//PHOTOLIST CHILD COMPONENT TO GALLERY= USING OBJECTS WITH TITLES AND DESCRIPTIONS TO USE IN THE MODAL LATER
+//PHOTOLIST CHILD COMPONENT TO GALLERY= USING OBJECTS WITH TITLES AND DESCRIPTIONS TO USE IN THE MODAL 
 const PhotoList = ({ category }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentPhoto, setCurrentPhoto] = useState();
@@ -128,14 +128,23 @@ const PhotoList = ({ category }) => {
 
   const currentPhotos = photos.filter(photo => photo.category === category);
 
+  const toggleModal = (image, i) => {
+    setCurrentPhoto({ ...image, index: i });
+    setIsModalOpen(!isModalOpen);
+  };
+
   return (
     <div>
+      {isModalOpen && (
+        <Modal onClose={toggleModal} currentPhoto={currentPhoto} />
+      )}
       <div className="flex-row">
         {currentPhotos.map((image, i) => (
           <img
             src={require(`../../assets/small/${category}/${i}.jpg`).default}
             alt={image.name}
             className="img-thumbnail mx-1"
+            onClick={() => toggleModal(image, i)}
             key={image.name}
           />
         ))}
