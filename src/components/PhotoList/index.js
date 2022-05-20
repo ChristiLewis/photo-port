@@ -1,6 +1,14 @@
+//WHEN USING USESTATE OR OTHER HOOKS TO SET DEFAULT VALUES FOR THE ARRAY- MODIFY THE IMPORT STATEMENT 
 import React, { useState } from 'react';
+//IMPORT MODAL OR THE CODE WILL BREAK-MAKE A MODAL COMPONENT AND ADD IT TO FILE
+import Modal from '../Modal';
 
+
+
+//PHOTOLIST CHILD COMPONENT TO GALLERY= USING OBJECTS WITH TITLES AND DESCRIPTIONS TO USE IN THE MODAL LATER
 const PhotoList = ({ category }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentPhoto, setCurrentPhoto] = useState();
   const [photos] = useState([
     {
       name: 'Grocery aisle',
@@ -115,7 +123,7 @@ const PhotoList = ({ category }) => {
       category: 'landscape',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
-    }
+    },
   ]);
 
   const currentPhotos = photos.filter(photo => photo.category === category);

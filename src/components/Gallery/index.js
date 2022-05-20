@@ -6,12 +6,16 @@ import PhotoList from '../PhotoList';
 import { capitalizeFirstLetter } from '../../utils/helpers';
 import photo from "../../assets/small/commercial/0.jpg";
 
-function Gallery(props) {
-  const currentCategory = {
-    name: "commercial",
-    description:
-      "Photos of grocery stores, food trucks, and other commercial projects",
-  };
+function Gallery({ currentCategory }) {
+  const { name, description } = currentCategory;
+  return (
+    <section>
+      <h1 data-testid="h1tag">{capitalizeFirstLetter(name)}</h1>
+      <p>{description}</p>
+      {/*PROP DRILL TO PASS DOWN THE CURRENTCATEGORY.NAME AS A PROP INTO THE PHOTOLIST COMPONENT FROM HERE- ITS PARENT GALLERY RETURN STATEMENT*/}
+      <PhotoList category={currentCategory.name} />
+    </section>
+  );
 
   //THIS SIMPLE RETURN WORKS
   // return (
