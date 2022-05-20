@@ -12,6 +12,7 @@ function Gallery(props) {
     description:
       "Photos of grocery stores, food trucks, and other commercial projects",
   };
+
   //THIS SIMPLE RETURN WORKS
   // return (
   //     <section>
@@ -24,12 +25,12 @@ function Gallery(props) {
       <h1>{capitalizeFirstLetter(currentCategory.name)}</h1>
       <p>{currentCategory.name}</p>
       <div className="flex-row">
-        {/*{photo} BREAKS THE CODE {PHOTOLIST DOES NOT*/}
+        {/*{photo} BREAKS THE CODE {PHOTOLIST DOES NOT-NOW IT WORKS IMPORTING URL TO PIC*/}
         <img
-          src= {photo}
+          src={photo}
           alt="Commercial Example"
           className="img-thumbnail mx-1"
-          
+
         />
       </div>
     </section>
