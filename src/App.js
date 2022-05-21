@@ -1,6 +1,5 @@
 //IMPORT ANY NEW COMPONENTS
 import React, { useState } from 'react';
-import { capitalizeFirstLetter } from "../../utils/helpers";
 import Nav from './components/Nav';
 import About from './components/About';
 import Gallery from './components/Gallery';

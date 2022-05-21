@@ -24,14 +24,11 @@ export function validateEmail(email) {
 
 //H
 
-//ONE LINE SOLUTION SIM TO THAT PROVIDED BY THE MODULE CONTENT FROM https://www.codegrepper.com/code-examples/html/react+capitalize+first+letter
-
-{/* <Text>{str.charAt(0).toUpperCase() + str.slice(1);}</Text> */}
+//ONE LINE SOLUTION SIM TO THAT PROVIDED BY THE MODULE CONTENT FROM https://www.codegrepper.com/code-examples/html/react+capitalize+first+letter<Text>{str.charAt(0).toUpperCase() + str.slice(1);}</Text> */}
 
 //SOLUTION AS A STYLE ISSUE FROM WRITTEN SIGH https://www.codegrepper.com/code-examples/html/react+capitalize+first+letter
 // I think the best way is to do it using styles (it will work for any UI framework)
-// JS
-{/* <Text class="capitalize-me">sometext</Text> */}
+// JS <Text class="capitalize-me">sometext</Text> */}
 // CSS
 // .capitalize-me::first-letter {
 //   text-transform: capitalize;
