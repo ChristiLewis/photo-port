@@ -5,6 +5,7 @@ import React from 'react';
 import PhotoList from '../PhotoList';
 import { capitalizeFirstLetter } from '../../utils/helpers';
 // import photo from "../../assets/small/commercial/0.jpg";
+// import { image, i } from '../../assets/small/${category}/${i}.jpg'
 
 function Gallery(props) {
   const { currentCategory } = props;
