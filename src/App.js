@@ -1,6 +1,6 @@
 //IMPORT ANY NEW COMPONENTS
 import React, { useState } from 'react';
-
+import { capitalizeFirstLetter } from "../../utils/helpers";
 import Nav from './components/Nav';
 import About from './components/About';
 import Gallery from './components/Gallery';
@@ -32,7 +32,7 @@ function App() {
         currentCategory={currentCategory}
       ></Nav>
       <main>
-        <Gallery currentCategory={currentCategory}></Gallery>
+        <Gallery currentCategory={currentCategory}/>
         <About></About>
       </main>
     </div>
