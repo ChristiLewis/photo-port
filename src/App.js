@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Nav from './components/Nav';
 import About from './components/About';
 import Gallery from './components/Gallery';
+import ContactForm from './components/Contact';
 import './App.css';
 //import logo from './logo.svg';
 
@@ -33,6 +34,7 @@ function App() {
   const [currentCategory, setCurrentCategory] = useState(categories[0]);
 
   return (
+    //INVOKE EACH COMPONENT'S FUNCTION BY CALLING IT IN THE APP.JS RETURN STATEMENT VIS A VIS <COMPONENTFUNCTIONNAME/>
     <div>
       <Nav
         categories={categories}
@@ -40,6 +42,7 @@ function App() {
         currentCategory={currentCategory}
       ></Nav>
       <main>
+        <ContactForm/>
         <Gallery currentCategory={currentCategory}/>
         <About></About>
       </main>
