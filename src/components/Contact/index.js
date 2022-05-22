@@ -15,37 +15,37 @@ function ContactForm() {
     const [errorMessage, setErrorMessage] = useState('');
     //DESTRUCTURE FORMSATE OBJECT INTO ITS NAMED PROPERTIES-NAME-EMAIL& MESSAGE AND MAKE THE NAME PROPERTY A DYNAMIC VARIABLE DETERMINED BY THE FORM
     const { name, email, message } = formState;
-
-    //VALIDATION FUNCTION GOES HERE IN THE BEGINNING
-    if (e.target.name === 'email') {
-        const isValid = validateEmail(e.target.value);
-        console.log(isValid);
-        //ISVALID CONDITIONAL STATEMENT
-        if (!isValid) {
-            setErrorMessage('Oops, your email is invalid.');
-        } else {
-            setErrorMessage('');
-        }
-    } else {
-        if (!e.target.value.length) {
-            setErrorMessage(`${e.target.name} is required`);
-        } else {
-            setErrorMessage('');
-        }
-    }
     //DESTRUCTURE FORMSATE OBJECT INTO ITS NAMED PROPERTIES-NAME-EMAIL& MESSAGE AND MAKE THE NAME PROPERTY A DYNAMIC VARIABLE DETERMINED BY THE FORM
-  
-    function handleChange(e) {
-        setFormState({ ...formState, [e.target.name]: e.target.value })
-
-        console.log('errorMessage', errorMessage);
-    }
 
     // DECLARE FUNCTION TO SUBMIT DATA LEAVE FOR BACKEND DEV TO PICK UP
     function handleSubmit(e) {
         e.preventDefault();
         console.log(formState);
-    }
+    };
+
+    const handleChange = (e) => {
+        //VALIDATION FUNCTION GOES HERE IN THE BEGINNING
+        if (e.target.name === 'email') {
+            const isValid = validateEmail(e.target.value);
+            console.log(isValid);
+            //ISVALID CONDITIONAL STATEMENT
+            if (!isValid) {
+                setErrorMessage('Oops, your email is invalid.');
+            } else {
+                setErrorMessage('');
+            }
+        } else {
+            if (!e.target.value.length) {
+                setErrorMessage(`${e.target.name} is required`);
+            } else {
+                setErrorMessage('');
+            }
+        }
+        if (!errorMessage) {
+            setFormState({ ...formState, [e.target.name]: e.target.value });
+            console.log('Handle Form', formState);
+        }
+    };
 
     return (
         <section>
