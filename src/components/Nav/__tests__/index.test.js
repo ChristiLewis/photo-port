@@ -69,7 +69,7 @@ describe('emoji is visible', () => {
         const { getByLabelText } = render(<Nav
             categories={categories}
             setCurrentCategory={mockSetCurrentCategory}
-            currentCategory={mockCurrentCategory} 
+            currentCategory={mockCurrentCategory}
         />);
 
         expect(getByLabelText('camera')).toHaveTextContent('📸');
@@ -82,7 +82,7 @@ describe('links are visible', () => {
         const { getByTestId } = render(<Nav
             categories={categories}
             setCurrentCategory={mockSetCurrentCategory}
-            currentCategory={mockCurrentCategory} 
+            currentCategory={mockCurrentCategory}
         />);
 
         expect(getByTestId('link')).toHaveTextContent('Oh Snap!');
