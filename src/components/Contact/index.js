@@ -12,14 +12,20 @@ function ContactForm() {
     //DESTRUCTURE FORMSATE OBJECT INTO ITS NAMED PROPERTIES-NAME-EMAIL& MESSAGE AND MAKE THE NAME PROPERTY A DYNAMIC VARIABLE DETERMINED BY THE FOR
     const { name, email, message } = formState;
     function handleChange(e) {
-
         setFormState({ ...formState, [e.target.name]: e.target.value })
+    }
+
+    // DECLARE FUNCTION TO SUBMIT DATA LEAVE FOR BACKEND DEV TO PICK UP
+    function handleSubmit(e) {
+        e.preventDefault();
+        console.log(formState);
     }
 
     return (
         <section>
             <h1 id="contact"> Contact Me!</h1>
-            <form id="contact-form">
+            {/* ASSIGN FUNCTION TO SUBMIT DATA */}
+            <form id="contact-form" onSubmit={handleSubmit}>
                 {/* ADD THE DEFAULT VALUE TO EACH FORM ELEMENT HANDLING FORM DATA TO ASSIGN INITIAL STATE VALUES FOR RECORD IN THE DOM */}
                 <div>
                     <label htmlFor="name">Name:</label>
