@@ -4,15 +4,41 @@
 //PUT THIS INDEX.JS FILE IN SRC/ASSETS/COMPONENTS/COMPONENTNAME TO MAKE A NEW REACT COMPONENT FOR THE SECTION 1ST=IMPORT 2ND=FUNCTIONS 3RD=EXPORT ----> DON'T FORGET TO CAPITALIZE THE 'first letter' BEC. IT USES PASCAL CASING TO SIGNIFY THE REACT COMPONENT
 import React, { useState } from 'react';
 
+//MUST IMPORT VALIDATE HELPER
+import { validateEmail } from '../../utils/helpers';
+
 //1. IMPORT USESTATE FROM REACT 2. DEFINE THE HOOK VIA AN EXPRESSION NEAR THE TOP OF THE FILE 3. CLEAR THE INPUT FIELDS ON THE COMPONENT LOADING VIA SETTING INITIAL STATE TO EMPTY STRINGS
 
 function ContactForm() {
+    //DECLARE FUNCTIONS VIA EXPRESSIONS
     const [formState, setFormState] = useState({ name: '', email: '', message: '' });
-
-    //DESTRUCTURE FORMSATE OBJECT INTO ITS NAMED PROPERTIES-NAME-EMAIL& MESSAGE AND MAKE THE NAME PROPERTY A DYNAMIC VARIABLE DETERMINED BY THE FOR
+    const [errorMessage, setErrorMessage] = useState('');
+    //DESTRUCTURE FORMSATE OBJECT INTO ITS NAMED PROPERTIES-NAME-EMAIL& MESSAGE AND MAKE THE NAME PROPERTY A DYNAMIC VARIABLE DETERMINED BY THE FORM
     const { name, email, message } = formState;
+
+    //VALIDATION FUNCTION GOES HERE IN THE BEGINNING
+    if (e.target.name === 'email') {
+        const isValid = validateEmail(e.target.value);
+        console.log(isValid);
+        //ISVALID CONDITIONAL STATEMENT
+        if (!isValid) {
+            setErrorMessage('Oops, your email is invalid.');
+        } else {
+            setErrorMessage('');
+        }
+    } else {
+        if (!e.target.value.length) {
+            setErrorMessage(`${e.target.name} is required`);
+        } else {
+            setErrorMessage('');
+        }
+    }
+    //DESTRUCTURE FORMSATE OBJECT INTO ITS NAMED PROPERTIES-NAME-EMAIL& MESSAGE AND MAKE THE NAME PROPERTY A DYNAMIC VARIABLE DETERMINED BY THE FORM
+  
     function handleChange(e) {
         setFormState({ ...formState, [e.target.name]: e.target.value })
+
+        console.log('errorMessage', errorMessage);
     }
 
     // DECLARE FUNCTION TO SUBMIT DATA LEAVE FOR BACKEND DEV TO PICK UP
