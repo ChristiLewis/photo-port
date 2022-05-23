@@ -10,29 +10,50 @@ import '@testing-library/jest-dom/extend-expect';
 //IMPORT THE COMPONENT
 import Modal from '..';
 
-//CONFIGURE THE TEST ENV BY CALLING CLEANUP() VIA AFTEREACH GLOBAL FUNCTION FROM JEST
-afterEach(cleanup);
-
-//DECLARE THE COMPONENT BEING TESTED VIA DESCRIBE()
-describe('Modal is rendering', () => {
-    //RENDERS COMPONENT TEST
-    it('renders', () => {
-        render(<Modal />);
-    });
-
-    //CREATE A TEST CASE TO COMPARE SNAPSHOTS OF THE DOM NODE STRUCTURE- HERE INSIDE THE DESCRIBE CALLBACK FUNCTION BODY- BENEATH THE RENDER TEST
-    it('matches snapshot DOM node stucture', () => {
-        //RETURN THE SNAPSHOT
-        const { asFragment } = render(<Modal />);
-        //COMPARE - CONTRAST W/ GOAL TO MATCH
-        expect(asFragment()).toMatchSnapshot();
-    })
-
-})
-
+//TEST TO HANDLE PROPS FOR THE NAV HERE UNDER THE IMPORT STATEMENTS
+const mockToggleModal = jest.fn();
 const currentPhoto = {
     name: 'Park bench',
     category: 'landscape',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
     index: 1
-  };
+};
+
+//CONFIGURE THE TEST ENV BY CALLING CLEANUP() VIA AFTEREACH GLOBAL FUNCTION FROM JEST
+afterEach(cleanup);
+
+//DECLARE THE COMPONENT BEING TESTED VIA DESCRIBE()
+describe('Modal component', () => {
+    //RENDERS COMPONENT TEST
+    it('renders', () => {
+        render(<Modal
+            onClose={mockToggleModal}
+            currentPhoto={currentPhoto}
+        />);
+    });
+
+    //CREATE A TEST CASE TO COMPARE SNAPSHOTS OF THE DOM NODE STRUCTURE- HERE INSIDE THE DESCRIBE CALLBACK FUNCTION BODY- BENEATH THE RENDER TEST
+    it('matches snapshot DOM node stucture', () => {
+        //RETURN THE SNAPSHOT
+        const { asFragment } = render(<Modal
+            onClose={mockToggleModal}
+            currentPhoto={currentPhoto}
+        />);
+        //COMPARE - CONTRAST W/ GOAL TO MATCH
+        expect(asFragment()).toMatchSnapshot();
+    });
+
+})
+
+//RENDER THE MODAL W/ MOCK FUNCTION AND DECLARED CONSTANT CURRENTPHOTO THEN SIMULATE THE CLICK EVENT-FIREEVENT
+describe('Click Event', () => {
+    it('calls onClose handler', () => {
+      const { getByText } = render(<Modal
+        onClose={mockToggleModal}
+        currentPhoto={currentPhoto}
+      />);
+      fireEvent.click(getByText('Close this modal'))
+  
+      expect(mockToggleModal).toHaveBeenCalledTimes(1);
+    });
+  })  
