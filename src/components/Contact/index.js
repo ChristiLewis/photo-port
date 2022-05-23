@@ -49,24 +49,30 @@ function ContactForm() {
 
     return (
         <section>
-            <h1 id="contact"> Contact Me!</h1>
+            <h1 data-testid="contact"> Contact me</h1>
             {/* ASSIGN FUNCTION TO SUBMIT DATA */}
             <form id="contact-form" onSubmit={handleSubmit}>
                 {/* ADD THE DEFAULT VALUE TO EACH FORM ELEMENT HANDLING FORM DATA TO ASSIGN INITIAL STATE VALUES FOR RECORD IN THE DOM */}
                 <div>
                     <label htmlFor="name">Name:</label>
                     {/*ASSIGN A FUNCTION, HANDLECHANGE, TO THE ADDED ATTRIBUTE ONCHANGE TO <INPUT> ELEMENT FOR NAME*/}
-                    <input type="text" defaultValue={name} onChange={handleChange} name="name" />
+                    <input type="text" defaultValue={name} onBlur={handleChange} name="name" />
                 </div>
                 <div>
                     <label htmlFor="email">Email address:</label>
-                    <input type="email" defaultValue={email} name="email" onChange={handleChange} />
+                    <input type="email" defaultValue={email} name="email" onBlur={handleChange} />
                 </div>
                 <div>
                     <label htmlFor="message">Message:</label>
-                    <textarea name="message" defaultValue={message} onChange={handleChange} rows="5" />
+                    <textarea name="message" defaultValue={message} onBlur={handleChange} rows="5" />
                 </div>
-                <button type="submit">Submit</button>
+                {errorMessage && (
+                    <div>
+                        < p className="error-text">{errorMessage}</p>
+                    </div>
+                )}
+                <button data-testid="button"
+                    type="submit">Submit</button>
             </form>
 
         </section>

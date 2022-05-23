@@ -8,6 +8,8 @@ import './App.css';
 //import logo from './logo.svg';
 
 function App() {
+  //MAINTAIN THE STATE (NO CONTACTFORM VISIBLE AT FIRST) VIA USESTATE HOOK
+  const [contactSelected, setContactSelected] = useState(false);
   //CATEGORIES BECOMES IDENTIFIED AS AN ARRAY AND MOVED FROM NAV TO APP
   const [categories] = useState([
     {
@@ -15,19 +17,19 @@ function App() {
       description:
         "Photos of grocery stores, food trucks, and other commercial projects",
     },
-    { 
-      name: "portraits", 
-      description: 
-        "Portraits of people in my life" 
+    {
+      name: "portraits",
+      description:
+        "Portraits of people in my life"
     },
-    { 
-      name: "food", 
-      description: 
-        "Delicious delicacies" 
+    {
+      name: "food",
+      description:
+        "Delicious delicacies"
     },
     {
       name: "landscape",
-      description: 
+      description:
         "Fields, farmhouses, waterfalls, and the beauty of nature"
     }
   ]);
@@ -40,11 +42,18 @@ function App() {
         categories={categories}
         setCurrentCategory={setCurrentCategory}
         currentCategory={currentCategory}
+        contactSelected={contactSelected}
+        setContactSelected={setContactSelected}
       ></Nav>
       <main>
-        <ContactForm/>
-        <Gallery currentCategory={currentCategory}/>
-        <About></About>
+        {!contactSelected ? (
+          <>
+            <Gallery currentCategory={currentCategory} />
+            <About />
+          </>
+        ) : (
+          <ContactForm />
+        )}
       </main>
     </div>
   );

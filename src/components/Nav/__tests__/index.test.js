@@ -16,15 +16,11 @@ const categories = [
 ]
 const mockCurrentCategory = jest.fn();
 const mockSetCurrentCategory = jest.fn();
+const mockContactSelected = jest.fn();
+const mockSetContactSelected = jest.fn();
 
 //CONFIGURE THE TEST ENV BY CALLING CLEANUP() VIA AFTEREACH GLOBAL FUNCTION FROM JEST
 afterEach(cleanup);
-
-//DECLARE THE COMPONENT BEING TESTED VIA DESCRIBE()
-// describe('Nav component', () => {
-//     //BASELINE TEST
-//     //SNAPSHOT TEST
-// })
 
 //CREATE A TEST
 
@@ -35,7 +31,11 @@ describe('Nav component', () => {
             categories={categories}
             setCurrentCategory={mockSetCurrentCategory}
             currentCategory={mockCurrentCategory}
+            ContactSelected={mockContactSelected}
+            setContactSelected={mockSetContactSelected}
         />);
+        //COMPARE - CONTRAST W/ GOAL TO MATCH
+
     });
 
     //CREATE A TEST CASE TO COMPARE SNAPSHOTS OF THE DOM NODE STRUCTURE- HERE INSIDE THE DESCRIBE CALLBACK FUNCTION BODY- BENEATH THE RENDER TEST
@@ -45,23 +45,14 @@ describe('Nav component', () => {
             categories={categories}
             setCurrentCategory={mockSetCurrentCategory}
             currentCategory={mockCurrentCategory}
+            ContactSelected={mockContactSelected}
+            setContactSelected={mockSetContactSelected}
         />);
         //COMPARE - CONTRAST W/ GOAL TO MATCH
         expect(asFragment()).toMatchSnapshot();
     });
 
 })
-
-//EMOJI VISIBILITY TEST PREP 
-//         //ARRANGE PARTS OF THE COMPONENT TO ACCESS IE THE HEADER SHOWS SPAN 
-//         <header className="flex-row px-1">
-//             <h2>
-//                 <a href='/'>
-//                     <span role="img" aria-label="camera">📸 </span>Oh Snap!
-//                 </a>
-//             </h2>
-//         </header>
-
 
 //CREATE A TEST WHICH OUTLINES THE ABOVE CHANGES IN NAV INDEX.JS
 describe('emoji is visible', () => {
@@ -70,6 +61,8 @@ describe('emoji is visible', () => {
             categories={categories}
             setCurrentCategory={mockSetCurrentCategory}
             currentCategory={mockCurrentCategory}
+            ContactSelected={mockContactSelected}
+            setContactSelected={mockSetContactSelected}
         />);
 
         expect(getByLabelText('camera')).toHaveTextContent('📸');
@@ -83,10 +76,13 @@ describe('links are visible', () => {
             categories={categories}
             setCurrentCategory={mockSetCurrentCategory}
             currentCategory={mockCurrentCategory}
+            ContactSelected={mockContactSelected}
+            setContactSelected={mockSetContactSelected}
         />);
 
         expect(getByTestId('link')).toHaveTextContent('Oh Snap!');
         expect(getByTestId('about')).toHaveTextContent('About me');
+     
     });
 })
 
