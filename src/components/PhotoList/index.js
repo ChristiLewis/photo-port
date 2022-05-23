@@ -125,12 +125,12 @@ const PhotoList = ({ category }) => {
   ]);
 
   const currentPhotos = photos.filter(photo => photo.category === category);
-
+  //TOGGLEMODAL() EXECUTED = FALSE VALUE FOR ISMODALOPEN
   const toggleModal = (image, i) => {
     setCurrentPhoto({ ...image, index: i });
     setIsModalOpen(!isModalOpen);
   };
-
+  //PASS DOWN THE PROP ONCLOSE TO CHILD COMPONENT
   return (
     <div>
       {isModalOpen && (
