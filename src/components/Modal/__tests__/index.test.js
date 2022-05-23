@@ -2,7 +2,7 @@
 import React from 'react';
 
 //IMPORT THE REACT TESTING LIBRARY
-import { render, cleanup } from '@testing-library/react';
+import { render, fireEvent, cleanup } from '@testing-library/react';
 
 //IMPORT THE JEST-DOM PACKAGE
 import '@testing-library/jest-dom/extend-expect';
